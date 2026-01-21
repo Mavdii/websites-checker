@@ -4,8 +4,8 @@ import { z } from 'zod';
  * Environment variable schema with validation
  */
 const envSchema = z.object({
-  // Database
-  DATABASE_URL: z.string().url().describe('PostgreSQL database connection URL'),
+  // Database (optional)
+  DATABASE_URL: z.string().url().optional().describe('PostgreSQL database connection URL'),
 
   // Redis (optional)
   REDIS_URL: z.string().url().optional().default('redis://localhost:6379').describe('Redis connection URL'),
