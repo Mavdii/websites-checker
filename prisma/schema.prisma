@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  name      String?
+  analyses  Analysis[]
+  createdAt DateTime   @default(now())
+
+  @@index([email])
+}
+
+model Analysis {
+  id          String         @id @default(cuid())
+  url         String
+  status      AnalysisStatus
+  options     Json
+  results     Json?
+  report      Report?
+  createdAt   DateTime       @default(now())
+  startedAt   DateTime?
+  completedAt DateTime?
+  userId      String?
+  user        User?          @relation(fields: [userId], references: [id])
+
+  @@index([url, createdAt])
+  @@index([userId, createdAt])
+  @@index([status])
+}
+
+model Report {
+  id         String   @id @default(cuid())
+  analysisId String   @unique
+  analysis   Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  content    Json
+  metadata   Json
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+enum AnalysisStatus {
+  QUEUED
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
