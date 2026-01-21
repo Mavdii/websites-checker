@@ -51,29 +51,6 @@ cp .env.example .env
 # Run development server
 npm run dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📖 Usage
-
-### Web Interface
-
-1. Navigate to `http://localhost:3000`
-2. Enter a website URL (e.g., `https://example.com`)
-3. Click "Analyze Website"
-4. View comprehensive analysis report
-
-### API Endpoint
-
-```bash
-# Start analysis
-curl -X POST http://localhost:3000/api/analysis \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://example.com"}'
-```
-
-## 🏗️ Architecture
-
 ### Tech Stack
 
 - **Frontend**: Next.js 16.1.4, React 19, TypeScript
@@ -123,25 +100,6 @@ npm run test:coverage
 npm run test:e2e
 ```
 
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-# Database (optional)
-DATABASE_URL="postgresql://user:password@localhost:5432/cruelstack"
-
-# Redis (optional)
-REDIS_URL="redis://localhost:6379"
-
-# Application
-NODE_ENV="development"
-```
-
-## 📊 Analysis Modules
-
 ### Current Modules
 
 - ✅ **Crawler Module** - Web page fetching and link extraction
@@ -165,23 +123,6 @@ NODE_ENV="development"
 - **Accent**: Amber (#f59e0b)
 - **Background**: Dark (#0a0a0f)
 - **Foreground**: Light Gray (#e4e4e7)
-
-### Typography
-
-- **Sans**: System UI fonts
-- **Mono**: JetBrains Mono, Fira Code, Cascadia Code
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 Development Scripts
 
 ```bash
 # Development
